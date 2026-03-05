@@ -1,6 +1,6 @@
 {
   "name": "@molefas/trikster",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Manage your installed triks through conversation",
   "type": "module",
   "main": "dist/agent.js",
@@ -9,7 +9,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@trikhub/sdk": "latest",
+    "@trikhub/sdk": "dev",
     "@langchain/anthropic": "^0.3.0",
     "@langchain/core": "^0.3.0",
     "@langchain/langgraph": "^0.2.0"

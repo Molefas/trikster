@@ -3,7 +3,7 @@
   "id": "trikster",
   "name": "Trikster",
   "description": "Manage your installed triks through conversation \u2014 search, install, uninstall, upgrade, and explore the TrikHub registry",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "agent": {
     "mode": "conversational",
     "handoffDescription": "Manages installed triks \u2014 search the TrikHub registry, install new triks, uninstall or upgrade existing ones, and list what's installed",
