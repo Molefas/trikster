@@ -1,0 +1,12 @@
+{
+  "displayName": "Trikster",
+  "shortDescription": "Manage your installed triks through conversation — search, install, uninstall, and upgrade",
+  "categories": ["trik-management", "registry", "demo"],
+  "keywords": ["trik", "management", "install", "registry", "search"],
+  "author": {
+    "name": "Molefas",
+    "github": "Molefas"
+  },
+  "repository": "https://github.com/Molefas/trikster",
+  "homepage": "https://github.com/Molefas/trikster"
+}

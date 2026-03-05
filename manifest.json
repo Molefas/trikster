@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 2,
+  "id": "trikster",
+  "name": "Trikster",
+  "description": "Manage your installed triks through conversation \u2014 search, install, uninstall, upgrade, and explore the TrikHub registry",
+  "version": "1.0.0",
+  "agent": {
+    "mode": "conversational",
+    "handoffDescription": "Manages installed triks \u2014 search the TrikHub registry, install new triks, uninstall or upgrade existing ones, and list what's installed",
+    "systemPromptFile": "./src/prompts/system.md",
+    "model": {
+      "capabilities": [
+        "tool_use"
+      ]
+    },
+    "domain": [
+      "trik-management",
+      "registry",
+      "package-management"
+    ]
+  },
+  "tools": {
+    "search_triks": {
+      "description": "Search the TrikHub registry for triks matching a query",
+      "logTemplate": "Searched for '{{query}}': {{total}} results",
+      "logSchema": {
+        "query": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "total": {
+          "type": "integer"
+        }
+      }
+    },
+    "list_installed_triks": {
+      "description": "List all currently installed triks with their capabilities",
+      "logTemplate": "Listed installed triks: {{count}} found",
+      "logSchema": {
+        "count": {
+          "type": "integer"
+        }
+      }
+    },
+    "install_trik": {
+      "description": "Install a trik from the TrikHub registry",
+      "logTemplate": "Install {{trikId}}: {{status}}",
+      "logSchema": {
+        "trikId": {
+          "type": "string",
+          "format": "id"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "installed",
+            "already_installed",
+            "failed"
+          ]
+        }
+      }
+    },
+    "uninstall_trik": {
+      "description": "Uninstall a trik",
+      "logTemplate": "Uninstall {{trikId}}: {{status}}",
+      "logSchema": {
+        "trikId": {
+          "type": "string",
+          "format": "id"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "uninstalled",
+            "not_found",
+            "failed"
+          ]
+        }
+      }
+    },
+    "upgrade_trik": {
+      "description": "Upgrade an installed trik to a newer version",
+      "logTemplate": "Upgrade {{trikId}}: {{status}}",
+      "logSchema": {
+        "trikId": {
+          "type": "string",
+          "format": "id"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "upgraded",
+            "already_latest",
+            "not_found",
+            "failed"
+          ]
+        }
+      }
+    },
+    "get_trik_info": {
+      "description": "Get detailed information about a trik from the registry",
+      "logTemplate": "Info for {{trikId}}: {{status}}",
+      "logSchema": {
+        "trikId": {
+          "type": "string",
+          "format": "id"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "found",
+            "not_found"
+          ]
+        }
+      }
+    }
+  },
+  "capabilities": {
+    "trikManagement": {
+      "enabled": true
+    }
+  },
+  "config": {
+    "required": [
+      {
+        "key": "ANTHROPIC_API_KEY",
+        "description": "Anthropic API key for the conversational agent"
+      }
+    ]
+  },
+  "limits": {
+    "maxTurnTimeMs": 30000
+  },
+  "entry": {
+    "module": "./dist/agent.js",
+    "export": "default"
+  }
+}
