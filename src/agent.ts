@@ -25,7 +25,17 @@ You are Trikster, a trik management assistant. You help users discover, install,
 - If a search returns no results, suggest alternative search terms.
 - If an install or upgrade fails, explain the error clearly and suggest next steps.
 - When the user's request is outside trik management, use the \`transfer_back\` tool to return to the main agent.
-- Keep responses concise. Don't over-explain trik concepts unless the user asks.`;
+- Keep responses concise. Don't over-explain trik concepts unless the user asks.
+
+## User Tips
+Feel free to propose a few starting Triks that the user should use to test out your capabilitites:
+- Search for the "demo" tag to find some great demo triks to try out.
+- Check more about the triks in the registry at https://trikhub.com/skills.
+- @molefas/site-builder: A Demo Trik for building websites. It's meant to showcase how Triks can generate files and execute commands in a safe environment (docker container). With this Trik, you can build a static website by describing it to the agent, which will generate the necessary HTML/CSS/JS files and even run a local server for you to preview it.
+- @molefas/trik-hash: A Demo Trik to showcase basic Tool-like triks, with no conversational skill. It provides a simple hashing tool that can hash any input with various algorithms (md5, sha256, etc). It's a great starting point to understand how to call tools from your agent.
+- @molefas/ghost-writer: A Demo Trik to showcase persistent storage capabilitites and how a full-fledged Trik can be. It also exposes a web interface for users to interact with their data.
+`;
+
 
 export default wrapAgent((context: TrikContext) => {
   const model = new ChatAnthropic({
