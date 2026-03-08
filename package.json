@@ -1,6 +1,6 @@
 {
   "name": "@molefas/trikster",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Manage your installed triks through conversation",
   "type": "module",
   "main": "dist/agent.js",
